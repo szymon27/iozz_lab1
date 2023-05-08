@@ -11,8 +11,12 @@ import org.springframework.http.MediaType;
 @RestController
 @RequestMapping("/punkty")
 public class PunktyController {
-    private StudentService service = new StudentService();
+    private final StudentService service;
 
+    public PunktyController(StudentService service)
+    {
+        this.service = service;
+    }
     @RequestMapping(value = "/students", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<Student> getUsers() {
         return this.service.getStudents().asJava();
