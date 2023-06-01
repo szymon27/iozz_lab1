@@ -1,5 +1,7 @@
 package punkty.punkty1.db;
 
+import punkty.punkty1.Student;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +22,15 @@ public class StudentRow {
         this.name = name;
         this.number = number;
         this.grupa = grupa;
+    }
+
+    public Student toStudent() {
+        return new Student(
+                this.getId(),
+                this.getName(),
+                this.getNumber(),
+                this.getGroup()
+        );
     }
 
     public long getId() {
