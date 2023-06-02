@@ -2,15 +2,17 @@ package punkty.punkty1;
 
 
 import io.vavr.collection.List;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import punkty.punkty1.db.IScoreRepository;
 import punkty.punkty1.db.IStudentRepository;
 
 import static org.junit.Assert.*;
-
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class StudentServiceTest {
     @Autowired
@@ -19,7 +21,7 @@ public class StudentServiceTest {
     @Autowired
     private IScoreRepository scoreRepository;
 
-    @AfterEach
+    @After
     public void cleanAfterTest() {
         this.studentRepository.deleteAll();
     }
