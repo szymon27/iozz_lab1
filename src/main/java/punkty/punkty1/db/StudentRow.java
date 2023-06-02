@@ -2,10 +2,8 @@ package punkty.punkty1.db;
 
 import punkty.punkty1.Student;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class StudentRow {
@@ -15,6 +13,9 @@ public class StudentRow {
     private String name;
     private String number;
     private String grupa;
+
+    @OneToMany(mappedBy = "student")
+    private Set<ScoreRow> scores;
 
     protected StudentRow(){}
 
@@ -63,5 +64,13 @@ public class StudentRow {
 
     public void setGroup(String group) {
         this.grupa = group;
+    }
+
+    public Set<ScoreRow> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<ScoreRow> scores) {
+        this.scores = scores;
     }
 }
